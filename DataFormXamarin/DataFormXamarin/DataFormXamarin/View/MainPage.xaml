@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DataFormXamarin"
+             xmlns:dataform="clr-namespace:Syncfusion.XForms.DataForm;assembly=Syncfusion.SfDataForm.XForms"
+             x:Class="DataFormXamarin.MainPage">
+    <ContentPage.BindingContext>
+        <local:DataFormViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Behaviors>
+        <local:DataFormBehavior/>
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.9*"/>
+                <RowDefinition Height="0.1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            <dataform:SfDataForm
+            x:Name="dataForm"
+            CommitMode="Explicit"
+                DataObject="{Binding DataObject}"
+                LayoutOptions="TextInputLayout"
+                ContainerType="None"
+            ValidationMode="Explicit" Grid.Row="0" Grid.ColumnSpan="2"/>
+            <StackLayout Orientation="Horizontal" Grid.Row="1">
+                <Button x:Name="save" Text="Save" Grid.Column="0"/>
+                <Button x:Name="cancel" Text="Cancel" Grid.Column="1"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
